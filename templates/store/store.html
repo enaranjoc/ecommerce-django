@@ -127,10 +127,9 @@
                 </header><!-- sect-heading -->
 
                 <div class="row">
-
-                    {% for product in products %}
-
-                    <div class="col-md-4">
+                    {% if products %}
+                        {% for product in products %}
+                            <div class="col-md-4">
                         <figure class="card card-product-grid">
                             <div class="img-wrap">
 
@@ -147,9 +146,13 @@
                                 <a href="{% url 'add_cart' product.id %}" class="btn btn-block btn-success">Agregar al carrito</a>
                             </figcaption>
                         </figure>
-                    </div> <!-- col.// -->
-
-                    {% endfor %}
+                            </div> <!-- col.// -->
+                        {% endfor %}
+                    {% else %}
+                        <div>
+                            <h2>No se encontraron resultados. Intente despues.</h2>
+                        </div>
+                    {% endif %}
 
                 </div> <!-- row end.// -->
 
