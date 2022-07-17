@@ -18,7 +18,8 @@
         </aside>
         <main class="col-md-6 border-left">
 
-          <form action="{% url 'add_cart' single_product.id %}" method="GET">
+          <form action="{% url 'add_cart' single_product.id %}" method="POST">
+            {% csrf_token %}
 
             <article class="content-body">
 
@@ -38,7 +39,7 @@
                   <select name="color" id="" class="form-control" required>
                     <option value="" disabled selected>Seleccione</option>
                     {% for i in single_product.variation_set.colors %}
-                    <option value="{{i.variation.value | lower }}">{{i.variation_value | capfirst }}</option>
+                    <option value="{{i.variation_value | lower }}">{{i.variation_value | capfirst }}</option>
                     {% endfor %}
 
                   </select>
@@ -50,7 +51,7 @@
                   <select name="talla" id="" class="form-control" required>
                     <option value="" disabled selected>Seleccione</option>
                     {% for i in single_product.variation_set.tallas %}
-                    <option value="{{i.variation.value | lower }}">{{i.variation_value | capfirst }}</option>
+                    <option value="{{i.variation_value | lower }}">{{i.variation_value | capfirst }}</option>
                     {% endfor %}
 
                   </select>
