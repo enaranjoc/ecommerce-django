@@ -1,11 +1,10 @@
-from email.policy import default
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from django.forms import EmailInput
+
 
 # Create your models here.
 class MyAccountManager(BaseUserManager):
-    def create_user(self, firs_name, last_name, email, username, password=None):
+    def create_user(self, firs_name, last_name, username, email,  password=None):
         if not email:
             raise ValueError('El usuario debe tener un email.')
 
