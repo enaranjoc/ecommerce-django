@@ -66,9 +66,9 @@
                         <div class="widget-header">
                             <small class="title text-muted">Bienvenido visitante!</small>
                             <div>
-                                <a href="{% static './signin.html' %}">Login</a> <span class="dark-transp"> |
+                                <a href="{% url 'login' %}">Login</a> <span class="dark-transp"> |
                                 </span>
-                                <a href="{% static './register.html' %}"> Registrar</a>
+                                <a href="{% url 'register' %}"> Registrar</a>
                             </div>
                         </div>
                         <a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
