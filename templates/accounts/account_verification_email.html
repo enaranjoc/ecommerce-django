@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+Hola {{ user.firs_name }},
+
+Por favor activa tu cuenta dandole click al siguiente link:
+
+http://{{ domain }}{% 'activate' uidbs4=uid token=token %}
+
+Saludos de Erick!
+
+{% endautoescape %}
