@@ -1,3 +1,4 @@
+from cmath import acos
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 from .models import Account
@@ -38,8 +39,9 @@ def register(request):
             send_email.send()
 
 
-            messages.success(request,'Se registro el usuario exitosamente.')
-            return redirect('register')
+            #messages.success(request,'Se registro el usuario exitosamente.')
+
+            return redirect('/accounts/login/?command=verification&email='+ email)
 
 
     context = {
@@ -69,3 +71,19 @@ def logout(request):
     messages.success(request, 'Has salido de sesion')
 
     return redirect('login')
+
+def activate(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = Account._default_manager.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, Account.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, 'Felicidades, tu cuenta esta activada!')
+        return redirect('login')
+    else:
+        messages.error(request, 'La activacion es invalida')
+        return redirect('register')

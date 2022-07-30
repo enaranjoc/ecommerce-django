@@ -136,11 +136,11 @@ MESSAGE_TAGS = {
     messages.ERROR : 'danger'
 }
 
-EMAIL_HOST = 'smtp.gamil.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'enaranjoc.en99@gmail.com' 
-EMAIL_HOST_PASSWORD = 'Redmi_@@@7'
-EMAIL_USE_TLS = 'True'
+# Funciona con https://mailtrap.io/ con gmail ya no funciona por lo de la apps menos segura no esta disponible
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '544e4f183a553e'
+EMAIL_HOST_PASSWORD = '328665e26711f6'
+EMAIL_PORT = '2525'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
